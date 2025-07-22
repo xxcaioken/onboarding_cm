@@ -4,7 +4,7 @@ defmodule OnboardingCm.Repo.Migrations.CreateMixProducts do
   def change do
     create table(:mix_products) do
       add :mix_id, references(:mix)
-      add :product_map, string
+      add :product_map, :string
 
       timestamps()
     end
