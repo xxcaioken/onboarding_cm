@@ -7,6 +7,7 @@ defmodule OnboardingCm.Repo.Migrations.CreateCollection do
       add :collection_year, :string
       add :collection_season, :string
       add :release_date, :date
+      timestamps()
     end
   end
 end
