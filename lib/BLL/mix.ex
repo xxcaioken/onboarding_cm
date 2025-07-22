@@ -1,4 +1,4 @@
-defmodule OnboardingCm.MixContext do
+defmodule OnboardingCm.BLL.MixContext do
   alias OnboardingCm.Schemas.Mix, as: MixSchema
 
   def create(attrs \\ %{}) do
