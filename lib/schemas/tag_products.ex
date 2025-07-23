@@ -2,7 +2,7 @@ defmodule OnboardingCm.Schemas.TagProducts do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "tag_products" do
+  schema "tag_product" do
     field :tag_id, :integer
     field :product_id, :integer
 

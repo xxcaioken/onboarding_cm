@@ -2,9 +2,9 @@ defmodule OnboardingCm.Schemas.MixProducts do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "mix_products" do
+  schema "mix_product" do
     field :mix_id, :integer
-    field :product_map, :integer
+    field :product_map, :string
 
     timestamps()
   end
