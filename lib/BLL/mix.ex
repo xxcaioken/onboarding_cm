@@ -14,7 +14,7 @@ defmodule OnboardingCm.BLL.MixContext do
 
   def get_mix!(id) do
     MixSchema
-    |> OnboardingCm.Repo.get!(id)
+    |> OnboardingCm.Repo.get_by(id: id)
   end
 
   def update_mix(%MixSchema{} = mix, attrs) do

@@ -14,7 +14,7 @@ defmodule OnboardingCm.BLL.TagContext do
 
   def get_tag!(id) do
     TagSchema
-    |> OnboardingCm.Repo.get!(id)
+    |> OnboardingCm.Repo.get_by(id: id)
   end
 
   def update_tag(%TagSchema{} = tag, attrs) do

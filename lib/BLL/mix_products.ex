@@ -23,6 +23,7 @@ defmodule OnboardingCm.BLL.MixProductContext do
   end
 
   def get_products_by_mix(mix_id) do
-    MixProductSchema.get_products_by_mix(mix_id)
+    %MixProductSchema{}
+    |> OnboardingCm.Repo.get_by(mix_id: mix_id)
   end
 end

@@ -23,6 +23,7 @@ defmodule OnboardingCm.BLL.TagProductsContext do
   end
 
   def get_products_by_tag(tag_id) do
-    TagProductSchema.get_products_by_tag(tag_id)
+    TagProductSchema
+    |> OnboardingCm.Repo.get_by(tag_id: tag_id)
   end
 end

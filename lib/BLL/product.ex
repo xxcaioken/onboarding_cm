@@ -14,7 +14,7 @@ defmodule OnboardingCm.BLL.ProductContext do
 
   def get_product!(id) do
     ProductSchema
-    |> OnboardingCm.Repo.get!(id)
+    |> OnboardingCm.Repo.get_by(id: id)
   end
 
   def update_product(%ProductSchema{} = product, attrs) do

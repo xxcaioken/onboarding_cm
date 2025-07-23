@@ -14,7 +14,7 @@ defmodule OnboardingCm.BLL.CollectionContext do
 
   def get_collection!(id) do
     CollectionSchema
-    |> OnboardingCm.Repo.get!(id)
+    |> OnboardingCm.Repo.get_by(id: id)
   end
 
   def update_collection(%CollectionSchema{} = collection, attrs) do
