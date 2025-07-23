@@ -3,8 +3,8 @@ defmodule OnboardingCm.Repo.Migrations.CreateTagProduct do
 
   def change do
     create table(:tag_product) do
-      add :tag_id, references(:tags)
-      add :product_id, references(:product)
+      add :tag_id, references(:tags, on_delete: :delete_all)
+      add :product_id, references(:product, on_delete: :delete_all)
 
       timestamps()
     end

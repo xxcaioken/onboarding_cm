@@ -3,7 +3,7 @@ defmodule Onboarding_cm.Repo.Migrations.CreateProduct do
 
   def change do
     create table(:product) do
-      add :collection_id, references(:collection)
+      add :collection_id, references(:collection, on_delete: :delete_all)
       add :name, :string
       add :img_url, :string
       add :description, :text
