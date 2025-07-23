@@ -1,4 +1,4 @@
-defmodule OnboardingCm.TagProducts do
+defmodule OnboardingCm.Schemas.TagProducts do
   use Ecto.Schema
   import Ecto.Changeset
 
