@@ -2,18 +2,21 @@ defmodule OnboardingCm.Schemas.Collection do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "collection" do
+  schema "collections" do
     field :name, :string
-    field :collection_year, :string
-    field :collection_season, :string
-    field :release_date, :date
+    field :year, :integer
+    field :season, :string
+    field :estimated_delivery_date, :date
+
+    has_many :products, OnboardingCm.Schemas.Product
 
     timestamps()
   end
 
   def changeset(collection, attrs) do
     collection
-    |> cast(attrs, [:name, :collection_year, :collection_season, :release_date])
-    |> validate_required([:name, :collection_year, :collection_season, :release_date])
+    |> cast(attrs, [:name, :year, :season, :estimated_delivery_date])
+    |> validate_required([:name, :year, :season, :estimated_delivery_date])
+    |> unique_constraint([:name, :year, :season])
   end
 end
