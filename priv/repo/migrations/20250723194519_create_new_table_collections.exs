@@ -2,15 +2,15 @@ defmodule OnboardingCm.Repo.Migrations.CreateNewTableCollections do
   use Ecto.Migration
 
   def change do
-    create table(:collections) do
+    create_if_not_exists table(:collections) do
       add :name, :string
-      add :collection_year, :string
-      add :collection_season, :string
+      add :year, :string
+      add :season, :string
       add :release_date, :date
 
       timestamps()
     end
 
-    create unique_index(:collections, [:name, :collection_year, :collection_season])
+    create_if_not_exists unique_index(:collections, [:name, :year, :season])
   end
 end

@@ -2,7 +2,7 @@ defmodule OnboardingCm.Repo.Migrations.CreateCollections do
   use Ecto.Migration
 
   def change do
-    create table(:collections) do
+    create_if_not_exists table(:collections) do
       add :name, :string, null: false
       add :year, :integer, null: false
       add :season, :string, null: false
