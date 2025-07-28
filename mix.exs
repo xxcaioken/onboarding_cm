@@ -6,7 +6,7 @@ defmodule OnboardingCm.MixProject do
       app: :onboarding_cm,
       version: "0.1.0",
       elixir: "~> 1.18",
-      start_permanent: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prd,
       deps: deps(),
       elixirc_paths: elixirc_paths(Mix.env()),
       aliases: aliases()

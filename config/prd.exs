@@ -5,7 +5,3 @@ config :onboarding_cm, OnboardingCm.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost"
-
-if File.exists?("#{__DIR__}/#{Mix.env()}.exs") do
-  import_config "#{Mix.env()}.exs"
-end

@@ -6,5 +6,3 @@ config :onboarding_cm, OnboardingCm.Repo,
   password: "postgres",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
-
-config "#{config_env()}.exs"
