@@ -5,7 +5,7 @@ defmodule OnboardingCm.Schemas.Tag do
   schema "tags" do
     field :name, :string
     field :value, :string
-    field :category, :string
+    field :description, :string
 
     many_to_many :products, OnboardingCm.Schemas.Product,
       join_through: "tag_products",
@@ -16,8 +16,8 @@ defmodule OnboardingCm.Schemas.Tag do
 
   def changeset(tag, attrs) do
     tag
-    |> cast(attrs, [:name, :value, :category])
-    |> validate_required([:name, :value, :category])
-    |> unique_constraint([:name, :value, :category])
+    |> cast(attrs, [:name, :value, :description])
+    |> validate_required([:name, :value])
+    |> unique_constraint([:name, :value, :description])
   end
 end
