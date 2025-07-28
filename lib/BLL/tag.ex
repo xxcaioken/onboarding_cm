@@ -7,6 +7,12 @@ defmodule OnboardingCm.BLL.TagContext do
     |> OnboardingCm.Repo.insert()
   end
 
+  def create!(attrs \\ %{}) do
+    %TagSchema{}
+    |> TagSchema.changeset(attrs)
+    |> OnboardingCm.Repo.insert!()
+  end
+
   def list_tags do
     TagSchema
     |> OnboardingCm.Repo.all()

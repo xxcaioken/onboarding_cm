@@ -7,6 +7,12 @@ defmodule OnboardingCm.BLL.CollectionContext do
     |> OnboardingCm.Repo.insert()
   end
 
+  def create!(attrs \\ %{}) do
+    %CollectionSchema{}
+    |> CollectionSchema.changeset(attrs)
+    |> OnboardingCm.Repo.insert!()
+  end
+
   def list_collections do
     CollectionSchema
     |> OnboardingCm.Repo.all()

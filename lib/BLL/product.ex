@@ -7,6 +7,12 @@ defmodule OnboardingCm.BLL.ProductContext do
     |> OnboardingCm.Repo.insert()
   end
 
+  def create!(attrs \\ %{}) do
+    %ProductSchema{}
+    |> ProductSchema.changeset(attrs)
+    |> OnboardingCm.Repo.insert!()
+  end
+
   def list_products do
     ProductSchema
     |> OnboardingCm.Repo.all()
