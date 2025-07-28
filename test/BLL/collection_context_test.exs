@@ -8,7 +8,12 @@ defmodule OnboardingCm.BLL.CollectionContextTest do
   end
 
   describe "gestão de coleções" do
-    test "criar uma coleção com dados válidos" do
+    test "criar uma coleção com dados válidos"  , %{test: test} do
+
+      IO.puts("=========== Iniciando testes de CollectionContext ===========")
+
+      IO.puts("#{test}")
+
       attrs = %{
         name: "Verão 2025",
         year: 2025,
@@ -21,12 +26,18 @@ defmodule OnboardingCm.BLL.CollectionContextTest do
       assert collection.year == 2025
     end
 
-    test "não criar coleção com dados inválidos" do
+    test "não criar coleção com dados inválidos"  , %{test: test} do
+
+      IO.puts("#{test}")
+
       attrs = %{name: nil, year: nil, season: nil, release_date: nil}
       assert {:error, %Ecto.Changeset{}} = CollectionContext.create(attrs)
     end
 
-    test "listar todas as coleções" do
+    test "listar todas as coleções"  , %{test: test} do
+
+      IO.puts("#{test}")
+
       collection1 =
         CollectionContext.create!(%{
           name: "Verão 2025",
@@ -47,7 +58,10 @@ defmodule OnboardingCm.BLL.CollectionContextTest do
       assert length(collections) == 2
     end
 
-    test "buscar coleção por ID" do
+    test "buscar coleção por ID"  , %{test: test} do
+
+      IO.puts("#{test}")
+
       collection =
         CollectionContext.create!(%{
           name: "Verão 2025",
@@ -61,7 +75,10 @@ defmodule OnboardingCm.BLL.CollectionContextTest do
       assert found.name == "Verão 2025"
     end
 
-    test "atualizar dados de uma coleção" do
+    test "atualizar dados de uma coleção"  , %{test: test} do
+
+      IO.puts("#{test}")
+
       collection =
         CollectionContext.create!(%{
           name: "Verão 2025",
@@ -77,7 +94,10 @@ defmodule OnboardingCm.BLL.CollectionContextTest do
       assert updated.release_date == ~D[2025-04-15]
     end
 
-    test "deletar uma coleção" do
+    test "deletar uma coleção"  , %{test: test} do
+
+      IO.puts("#{test}")
+
       collection =
         CollectionContext.create!(%{
           name: "Verão 2025",
