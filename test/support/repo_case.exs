@@ -14,7 +14,7 @@ defmodule OnboardingCm.RepoCase do
   setup tags do
     pid = Ecto.Adapters.SQL.Sandbox.start_owner!(OnboardingCm.Repo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
-    :ok# = Ecto.Adapters.SQL.Sandbox.checkout(OnboardingCm.Repo)
+    # = Ecto.Adapters.SQL.Sandbox.checkout(OnboardingCm.Repo)
+    :ok
   end
-
 end

@@ -1,6 +1,6 @@
 import Config
 
-config :onboarding_cm, ecto_repos: [ OnboardingCm.Repo ]
+config :onboarding_cm, ecto_repos: [OnboardingCm.Repo]
 
 config :onboarding_cm, OnboardingCm.Repo,
   database: "onboarding_cm_repo",
