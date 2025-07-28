@@ -4,7 +4,7 @@ collection_attrs = %{
   name: "Verão 2025",
   year: 2025,
   season: "Verão",
-  estimated_delivery_date: ~D[2025-03-15]
+  release_date: ~D[2025-03-15]
 }
 
 case CollectionContext.create(collection_attrs) do

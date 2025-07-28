@@ -6,7 +6,7 @@ defmodule OnboardingCm.MixProject do
       app: :onboarding_cm,
       version: "0.1.0",
       elixir: "~> 1.18",
-      start_permanent: Mix.env() == :prd,
+      start_permanent: Mix.env() == :prod,
       deps: deps(),
       elixirc_paths: elixirc_paths(Mix.env()),
       aliases: aliases()
@@ -34,7 +34,8 @@ defmodule OnboardingCm.MixProject do
 
   defp aliases do
     [
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      "setup.ecto": ["ecto.create --quiet", "ecto.migrate --quiet"],
+      "test.clean": ["ecto.drop --quiet", "setup.ecto", "test"]
     ]
   end
 end
