@@ -34,6 +34,44 @@ defmodule OnboardingCm.BLL.ProductContextTest do
       assert product.description == "Blusa de algodão com corte básico"
     end
 
+    test "não criar produto com dados inválidos", %{test: test} do
+      IO.puts("#{test}")
+
+      attrs = %{name: nil, description: nil, img_url: nil, collection_id: nil}
+      assert {:error, %Ecto.Changeset{}} = ProductContext.create(attrs)
+    end
+
+    test "listar todos os produtos", %{test: test} do
+      IO.puts("#{test}")
+
+      collection =
+        CollectionContext.create!(%{
+          name: "Verão 2025",
+          year: 2025,
+          season: "Verão",
+          release_date: ~D[2025-03-15]
+        })
+
+      product1 =
+        ProductContext.create!(%{
+          name: "Blusa Básica",
+          description: "Blusa de algodão",
+          img_url: "https://example.com/blusa.jpg",
+          collection_id: collection.id
+        })
+
+      product2 =
+        ProductContext.create!(%{
+          name: "Calça Jeans",
+          description: "Calça jeans",
+          img_url: "https://example.com/calca.jpg",
+          collection_id: collection.id
+        })
+
+      products = ProductContext.list_products()
+      assert length(products) == 2
+    end
+
     test "editando produto existente", %{test: test} do
       IO.puts("#{test}")
 
@@ -107,7 +145,5 @@ defmodule OnboardingCm.BLL.ProductContextTest do
       assert found.id == product.id
       assert found.name == "Calça Jeans Buscada"
     end
-
-    # todo continuar
   end
 end
