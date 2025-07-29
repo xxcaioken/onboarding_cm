@@ -19,7 +19,7 @@ defmodule OnboardingCm.BLL.TagContextTest do
         description: "Descrição da nova tag"
       }
 
-      assert {:ok, tag} = TagContext.create(attrs)
+      assert tag = TagContext.create!(attrs)
       assert tag.name == "Tag infantil"
       assert tag.value == "Publico: infantil"
       assert tag.description == "Descrição da nova tag"
@@ -80,7 +80,7 @@ defmodule OnboardingCm.BLL.TagContextTest do
 
       update_attrs = %{name: "Tag atualizada", value: "Publico: atualizado"}
 
-      assert {:ok, updated} = TagContext.update_tag(tag, update_attrs)
+      assert updated = TagContext.update_tag!(tag, update_attrs)
       assert updated.name == "Tag atualizada"
       assert updated.value == "Publico: atualizado"
     end
@@ -95,7 +95,7 @@ defmodule OnboardingCm.BLL.TagContextTest do
           description: "Descrição da tag deletada"
         })
 
-      assert {:ok, _} = TagContext.delete_tag(tag)
+      assert _ = TagContext.delete_tag!(tag)
       assert TagContext.get_tag!(tag.id) == nil
     end
   end

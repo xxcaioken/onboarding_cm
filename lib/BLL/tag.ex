@@ -23,13 +23,13 @@ defmodule OnboardingCm.BLL.TagContext do
     |> OnboardingCm.Repo.get_by(id: id)
   end
 
-  def update_tag(%TagSchema{} = tag, attrs) do
+  def update_tag!(%TagSchema{} = tag, attrs) do
     tag
     |> TagSchema.changeset(attrs)
-    |> OnboardingCm.Repo.update()
+    |> OnboardingCm.Repo.update!()
   end
 
-  def delete_tag(%TagSchema{} = tag) do
-    OnboardingCm.Repo.delete(tag)
+  def delete_tag!(%TagSchema{} = tag) do
+    OnboardingCm.Repo.delete!(tag)
   end
 end
