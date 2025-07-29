@@ -23,13 +23,13 @@ defmodule OnboardingCm.BLL.CollectionContext do
     |> OnboardingCm.Repo.get_by(id: id)
   end
 
-  def update_collection(%CollectionSchema{} = collection, attrs) do
+  def update_collection!(%CollectionSchema{} = collection, attrs) do
     collection
     |> CollectionSchema.changeset(attrs)
-    |> OnboardingCm.Repo.update()
+    |> OnboardingCm.Repo.update!()
   end
 
-  def delete_collection(%CollectionSchema{} = collection) do
-    OnboardingCm.Repo.delete(collection)
+  def delete_collection!(%CollectionSchema{} = collection) do
+    OnboardingCm.Repo.delete!(collection)
   end
 end

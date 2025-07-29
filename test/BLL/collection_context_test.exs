@@ -20,7 +20,7 @@ defmodule OnboardingCm.BLL.CollectionContextTest do
         release_date: ~D[2025-03-15]
       }
 
-      assert {:ok, collection} = CollectionContext.create(attrs)
+      assert collection = CollectionContext.create!(attrs)
       assert collection.name == "Verão 2025"
       assert collection.year == 2025
     end
@@ -84,9 +84,9 @@ defmodule OnboardingCm.BLL.CollectionContextTest do
 
       update_attrs = %{name: "Verão 2025 Atualizada", release_date: ~D[2025-04-15]}
 
-      assert {:ok, updated} = CollectionContext.update_collection(collection, update_attrs)
-      assert updated.name == "Verão 2025 Atualizada"
-      assert updated.release_date == ~D[2025-04-15]
+      assert updated_collection = CollectionContext.update_collection!(collection, update_attrs)
+      assert updated_collection.name == "Verão 2025 Atualizada"
+      assert updated_collection.release_date == ~D[2025-04-15]
     end
 
     test "deletar uma coleção", %{test: test} do
@@ -100,7 +100,7 @@ defmodule OnboardingCm.BLL.CollectionContextTest do
           release_date: ~D[2025-03-15]
         })
 
-      assert {:ok, _} = CollectionContext.delete_collection(collection)
+      assert _ = CollectionContext.delete_collection!(collection)
       assert CollectionContext.get_collection!(collection.id) == nil
     end
   end
