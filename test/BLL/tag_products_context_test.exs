@@ -20,7 +20,7 @@ defmodule OnboardingCm.BLL.TagProductsContextTest do
         release_date: ~D[2025-03-15]
       }
 
-      assert {:ok, collection} = CollectionContext.create(collection_attributes)
+      assert collection = CollectionContext.create!(collection_attributes)
 
       product_attributes = %{
         name: "Blusa Básica",
@@ -29,7 +29,7 @@ defmodule OnboardingCm.BLL.TagProductsContextTest do
         collection_id: collection.id
       }
 
-      assert {:ok, product} = ProductContext.create(product_attributes)
+      assert product = ProductContext.create!(product_attributes)
 
       tag_attributes = %{
         name: "Tag infantil",
@@ -37,14 +37,14 @@ defmodule OnboardingCm.BLL.TagProductsContextTest do
         description: "Descrição da tag"
       }
 
-      assert {:ok, tag} = TagContext.create(tag_attributes)
+      assert tag = TagContext.create!(tag_attributes)
 
       attrs = %{
         product_id: product.id,
         tag_id: tag.id
       }
 
-      assert {:ok, tag_product} = TagProductsContext.create(attrs)
+      assert tag_product = TagProductsContext.create!(attrs)
       assert tag_product.product_id == product.id
       assert tag_product.tag_id == tag.id
     end
@@ -134,7 +134,7 @@ defmodule OnboardingCm.BLL.TagProductsContextTest do
 
       update_attrs = %{tag_id: tag2.id}
 
-      assert {:ok, updated} = TagProductsContext.update_tag_product(tag_product, update_attrs)
+      assert updated = TagProductsContext.update_tag_product!(tag_product, update_attrs)
       assert updated.tag_id == tag2.id
     end
 
@@ -166,7 +166,7 @@ defmodule OnboardingCm.BLL.TagProductsContextTest do
 
       tag_product = TagProductsContext.create!(%{product_id: product.id, tag_id: tag.id})
 
-      assert {:ok, _} = TagProductsContext.delete_tag_product(tag_product)
+      assert _ = TagProductsContext.delete_tag_product!(tag_product)
     end
 
     test "buscar produtos por tag", %{test: test} do
@@ -197,7 +197,7 @@ defmodule OnboardingCm.BLL.TagProductsContextTest do
 
       tag_product = TagProductsContext.create!(%{product_id: product.id, tag_id: tag.id})
 
-      found = TagProductsContext.get_products_by_tag(tag.id)
+      found = TagProductsContext.get_products_by_tag!(tag.id)
       assert found.tag_id == tag.id
       assert found.product_id == product.id
     end

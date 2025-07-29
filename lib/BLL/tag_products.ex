@@ -18,18 +18,18 @@ defmodule OnboardingCm.BLL.TagProductsContext do
     |> OnboardingCm.Repo.all()
   end
 
-  def update_tag_product(%TagProductSchema{} = tag_product, attrs) do
+  def update_tag_product!(%TagProductSchema{} = tag_product, attrs) do
     tag_product
     |> TagProductSchema.changeset(attrs)
-    |> OnboardingCm.Repo.update()
+    |> OnboardingCm.Repo.update!()
   end
 
-  def delete_tag_product(%TagProductSchema{} = tag_product) do
-    OnboardingCm.Repo.delete(tag_product)
+  def delete_tag_product!(%TagProductSchema{} = tag_product) do
+    OnboardingCm.Repo.delete!(tag_product)
   end
 
-  def get_products_by_tag(tag_id) do
+  def get_products_by_tag!(tag_id) do
     TagProductSchema
-    |> OnboardingCm.Repo.get_by(tag_id: tag_id)
+    |> OnboardingCm.Repo.get_by!(tag_id: tag_id)
   end
 end
