@@ -23,13 +23,13 @@ defmodule OnboardingCm.BLL.ProductContext do
     |> OnboardingCm.Repo.get_by(id: id)
   end
 
-  def update_product(%ProductSchema{} = product, attrs) do
+  def update_product!(%ProductSchema{} = product, attrs) do
     product
     |> ProductSchema.changeset(attrs)
-    |> OnboardingCm.Repo.update()
+    |> OnboardingCm.Repo.update!()
   end
 
-  def delete_product(%ProductSchema{} = product) do
-    OnboardingCm.Repo.delete(product)
+  def delete_product!(%ProductSchema{} = product) do
+    OnboardingCm.Repo.delete!(product)
   end
 end

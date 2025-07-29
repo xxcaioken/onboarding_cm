@@ -20,7 +20,7 @@ defmodule OnboardingCm.BLL.ProductContextTest do
         release_date: ~D[2025-03-15]
       }
 
-      assert {:ok, collection} = CollectionContext.create(collection_attributes)
+      assert collection = CollectionContext.create!(collection_attributes)
 
       attrs = %{
         name: "Blusa Básica",
@@ -29,7 +29,7 @@ defmodule OnboardingCm.BLL.ProductContextTest do
         collection_id: collection.id
       }
 
-      assert {:ok, product} = ProductContext.create(attrs)
+      assert product = ProductContext.create!(attrs)
       assert product.name == "Blusa Básica"
       assert product.description == "Blusa de algodão com corte básico"
     end
@@ -93,7 +93,7 @@ defmodule OnboardingCm.BLL.ProductContextTest do
 
       updated_attrs = %{name: "Calça Jeans Atualizada", description: "Nova descrição"}
 
-      assert {:ok, updated_product} = ProductContext.update_product(product, updated_attrs)
+      assert updated_product = ProductContext.update_product!(product, updated_attrs)
       assert updated_product.name == "Calça Jeans Atualizada"
       assert updated_product.description == "Nova descrição"
     end
@@ -117,7 +117,7 @@ defmodule OnboardingCm.BLL.ProductContextTest do
           collection_id: collection.id
         })
 
-      assert {:ok, delete_product} = ProductContext.delete_product(product)
+      assert delete_product = ProductContext.delete_product!(product)
       assert delete_product.name == "Calça Jeans Deletada"
       assert delete_product.description == "Calça jeans de corte reto"
     end
